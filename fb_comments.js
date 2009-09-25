@@ -2,9 +2,6 @@
 // var api_key = "<api_key>";
 // var template_id = "<template_id>";
 // var site_name = "<site_name>";
-var api_key = "a993b3c318314ae985788373988c52aa";
-var template_id = "133120167134";
-var site_name = "Super Master";
 
 // Global variables
 var api = null;
@@ -44,7 +41,7 @@ function setAndCreateFBElements(uid) {
         $('comment-form').writeAttribute('name', 'commentform');
         $('submit').writeAttribute('name', 'submit2');
         $('submit').writeAttribute('id', 'submit2');
-        $('comment-form').writeAttribute('onSubmit', 'return streamPost(this.comment.value)');
+        $('comment-form').writeAttribute('onSubmit', 'return streamPost(this.comment_body.value)');
     } else {
 				$('commentingOptions').hide();
 		}
@@ -79,8 +76,8 @@ function populateAuthor(uid) {
 
 function streamPost(comment) {
 		var site_url = location.protocol + '//' + location.host;
-		var post_title = $$('div.entrytitle')[0].childElements()[0].childElements()[0].innerHTML;
-		var body = $$('div.entrybody')[0].childElements()[0].innerHTML;
+		var post_title = $('entry-title').innerHTML;
+		var body = $('entry-content').childElements()[0].innerHTML;
     var template_data = {
         "site": "<a href=#{site_url}>#{site_name}</a>".interpolate({site_url: site_url, site_name: site_name}), 
 				"post_title" : "<a href=#{href}>#{post_title}</a>".interpolate({post_title: post_title, href: location.href}),
