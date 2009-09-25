@@ -3,6 +3,7 @@
 // var template_id = "<template_id>";
 // var site_name = "<site_name>";
 
+
 // Global variables
 var api = null;
 var guid = null;
@@ -21,10 +22,24 @@ function initComments() {
             var uid = api.get_session().uid;
             guid = uid;
             setUserData(uid);
-            setAndCreateFBElements(uid);
-            $('fbinfo').show();
+						if (window.name == '') {
+							$('fblogin2').show();
+							$('fblogin2_button').observe('click', setSession);
+							function setSession() {
+								alert('session set');
+		            setAndCreateFBElements(uid);
+								$('fblogin2').hide();
+		            $('fbinfo').show();
+								window.name = new Date().getTime();
+							}
+						} else {
+							alert(window.name);
+							setAndCreateFBElements(uid);
+							$('fbinfo').show();
+						}
         } else {
             $('fblogin').show();
+						window.name = new Date().getTime();
         }
     });
 }
