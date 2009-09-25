@@ -26,14 +26,14 @@ function initComments() {
 							$('fblogin2').show();
 							$('fblogin2_button').observe('click', setSession);
 							function setSession() {
-								alert('session set');
+								// alert('session set');
 		            setAndCreateFBElements(uid);
 								$('fblogin2').hide();
 		            $('fbinfo').show();
 								window.name = new Date().getTime();
 							}
 						} else {
-							alert(window.name);
+							// alert(window.name);
 							setAndCreateFBElements(uid);
 							$('fbinfo').show();
 						}
